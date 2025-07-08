@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV</title>
+  <link rel="stylesheet" href="stylesheet.css">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="lamp left" id="lampLeft"></div>
+  <div class="lamp right" id="lampRight"></div>
+  <div class="light left" id="lightLeft"></div>
+  <div class="light right" id="lightRight"></div>
+
+  <div id="gallery">
+    <div class="painting" onclick="showWall('personal')" style="background-image: url('./images/personal.jpg');"><div class="label-box">Personal Info</div></div>
+    <div class="painting" onclick="showWall('experience')" style="background-image: url('./images/experience.jpg');"><div class="label-box">Experience</div></div>
+    <div class="painting" onclick="showWall('skills')" style="background-image: url('./images/skills.jpg');"><div class="label-box">Skills</div></div>
+    <div class="painting" onclick="showWall('projects')" style="background-image: url('./images/project.jpg');"><div class="label-box">Projects</div></div>
+  </div>
+
+  <div id="infoWall" class="info-wall">
+    <button class="back-btn" onclick="goBack()">Back</button>
+    <div class="close-btn" onclick="closeWall()">&times;</div>
+    <h2 id="wallTitle">Section</h2>
+    <div id="wallContent"></div>
+  </div>
+
+  <script>
+    function showWall(section) {
+      const wall = document.getElementById("infoWall");
+      const title = document.getElementById("wallTitle");
+      const content = document.getElementById("wallContent");
+      wall.style.display = "flex";
+
+      // Hide lights
+      document.getElementById("lampLeft").classList.add("hidden");
+      document.getElementById("lampRight").classList.add("hidden");
+      document.getElementById("lightLeft").classList.add("hidden");
+      document.getElementById("lightRight").classList.add("hidden");
+
+      if (section === 'personal') {
+        title.textContent = "Personal Information";
+        content.innerHTML = `
+          <p>Name: Wed Alsulaimani</p>
+          <p>My <a href='mailto:wedalsliman@gmail.com'>Email</a></p>
+          <p>My <a href="tel:+966537832108">phone </a>number</p>
+          <p>My <a href='https://www.linkedin.com/in/ms-alsulaimani-a49504288/'>LinkedIn </a>account</p>
+          <p>My <a href='https://github.com/WedAlsulaimani'>GitHub </a>account</p>
+        `;
+      } else if (section === 'experience') {
+        title.textContent = "Experience";
+        content.innerHTML = `
+          <ul>
+            <li>Internship at Smart Method - Full Stack Robotics</li>
+            <li>I volunteered approximately 200 hours and acquired administrative and technical skills </li>
+            <li>Head of content writing and events at the Artificial Intelligence Club </li>
+            <li>Worked on projects in web development, data analysis, and training artificial intelligence models</li>
+            <li>Obtained a virtual training certificate from Microsoft</li>
+          </ul>
+        `;
+      } else if (section === 'skills') {
+        title.textContent = "Skills";
+        content.innerHTML = `
+          <ul>
+            <li>HTML, CSS, C++, python, power bi, Ui path</li>
+            <li>Machine Learning , Deep Learning</li>
+            <li>Data Visualization, Dashboards</li>
+            <li>Creative and critical thinking and strategic planning</li>
+            <li>Problem-solving</li>
+            <li>Teamwork and collaboration</li>
+            <li>Emotional intelligence,effective communication and enhancing confidence</li>
+            <li>Flexibility and adaptation to new technologies and tools</li>
+          </ul>
+        `;
+      } else if (section === 'projects') {
+        title.textContent = "Projects";
+        content.innerHTML = `
+          <ul>
+            <li>Converting Gulf currencies into a file linked to live stock prices - using C++</li>
+            <li>Website that tests the incidence of color blindness - using HTML, CSS, JavaScript and PHP</li>
+            <li>Developed a model that predicts house prices with dynamic dashboard - using google colab and power bi</li>
+            <li>I am constantly working on many projects, including a project that analyzes eye language, and I hope in the future I can analyze my entire body language using artificial intelligence </li>
+          </ul>
+        `;
+      }
+    }
+
+    function closeWall() {
+      document.getElementById("infoWall").style.display = "none";
+      document.getElementById("lampLeft").classList.remove("hidden");
+      document.getElementById("lampRight").classList.remove("hidden");
+      document.getElementById("lightLeft").classList.remove("hidden");
+      document.getElementById("lightRight").classList.remove("hidden");
+    }
+
+    function goBack() {
+      closeWall();
+    }
+  </script>
+</body>
+</html>
